@@ -1,5 +1,5 @@
 {
-    "name": "demoraisestevam/ecommerce",
+    "name": "demoraisestevam/ecommerce-with-php",
     "authors": [
         {
             "name": "Estevam de Morais"
@@ -12,7 +12,7 @@
     },
     "autoload": {
         "psr-4": {
-            "": "vendor\\hcodebr\\php-classes\\src"
+            "Hcode\\": "vendor\\hcodebr\\php-classes\\src"
         }
     }
 }
