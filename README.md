@@ -1,3 +1,3 @@
-# Projeto E-commerce
+# Project E-commerce
 
-Projeto desenvolvido do zero, Template usado no projeto [Almsaeed Studio](https://almsaeedstudio.com)
+Template used in project [Almsaeed Studio](https://almsaeedstudio.com)
