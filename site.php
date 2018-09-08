@@ -2,6 +2,7 @@
 
 use \Hcode\Page;
 use \Hcode\Model\Product;
+use \Hcode\Model\Category;
 
 // Strore
 $app->get('/', function() {
@@ -27,7 +28,7 @@ $app->get("/category/:idcategory", function($idcategory) {
 
 	$page->setTpl("category", array(
 		'category'=>$category->getValues(),
-		'products'=>[]
+		'products'=>Product::checkList($category->getProducts())
 	));
 
 });
