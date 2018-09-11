@@ -3,21 +3,20 @@
 use \Hcode\Page;
 use \Hcode\Model\Product;
 use \Hcode\Model\Category;
+use \Hcode\Model\Cart;
 
-// Strore
 $app->get('/', function() {
     
 	$products = Product::listAll();
 
 	$page = new Page();
 
-	$page->setTpl("index", array(
-		"products"=>Product::checkList($products)
-	));
+	$page->setTpl("index", [
+		'products'=>Product::checkList($products)
+	]);
 
 });
 
-// Categories Store
 $app->get("/categories/:idcategory", function($idcategory){
 
 	$page = (isset($_GET['page'])) ? (int)$_GET['page'] : 1;
@@ -30,13 +29,11 @@ $app->get("/categories/:idcategory", function($idcategory){
 
 	$pages = [];
 
-	for ($i=1; $i <= $pagination['pages']; $i++) {
-
+	for ($i=1; $i <= $pagination['pages']; $i++) { 
 		array_push($pages, [
 			'link'=>'/categories/'.$category->getidcategory().'?page='.$i,
 			'page'=>$i
 		]);
-
 	}
 
 	$page = new Page();
@@ -49,8 +46,7 @@ $app->get("/categories/:idcategory", function($idcategory){
 
 });
 
-// Product Detail
-$app->get("/products/:desurl", function($desurl) {
+$app->get("/products/:desurl", function($desurl){
 
 	$product = new Product();
 
@@ -58,10 +54,20 @@ $app->get("/products/:desurl", function($desurl) {
 
 	$page = new Page();
 
-	$page->setTpl("product-detail", array(
+	$page->setTpl("product-detail", [
 		'product'=>$product->getValues(),
 		'categories'=>$product->getCategories()
-	));
+	]);
+
+});
+
+$app->get("/cart", function(){
+
+	$cart = Cart::getFromSession();
+
+	$page = new Page();
+
+	$page->setTpl("cart");
 
 });
 
