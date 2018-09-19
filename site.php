@@ -331,8 +331,6 @@ $app->get("/profile", function(){
 		'profileError'=>User::getError()		
 	]);
 
-	var_dump($user->getValues());
-
 });
 
 $app->post("/profile", function(){
