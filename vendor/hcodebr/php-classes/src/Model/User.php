@@ -429,7 +429,7 @@ class User extends Model {
 	{
 
 		return password_hash($password, PASSWORD_DEFAULT, [
-			'cost'=>8
+			'cost'=>12
 		]);
 
 	}
