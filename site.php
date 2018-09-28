@@ -415,9 +415,7 @@ $app->post("/forgot/reset", function() {
 
 	$user->get((int)$forgot["iduser"]);
 
-	$password = $user->getPasswordHash($_POST["password"]);
-
-	$user->setPassword($password);
+	$user->setPassword(User::getPasswordHash($_POST["password"]));
 
 	$page = new Page();
 
@@ -674,9 +672,7 @@ $app->post("/profile/change-password", function(){
 
 	}
 
-	$password = $user->getPasswordHash($_POST['new_pass']);
-
-	$user->setPassword($password);
+	$user->setPassword(User::getPasswordHash($_POST['new_pass']));
 
 	User::setSuccess("Senha alterada com sucesso.");
 	header("Location: /profile/change-password");
